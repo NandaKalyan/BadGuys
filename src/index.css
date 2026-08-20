@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #f2a900;
+  --gold-soft: #d98f00;
+  --cream: #fffaf0;
+  --font-heading: "Space Grotesk", "Inter", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: var(--font-body);
+  background: #050301;
+  color: white;
+  cursor: url("/cursor-dollar.png") 32 19, auto;
+}
+button { font: inherit; }
+
+.video-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 48%, transparent 20%, rgba(0,0,0,.05) 48%, rgba(0,0,0,.62) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.48) 0%, transparent 31%, transparent 69%, rgba(0,0,0,.48) 100%),
+    linear-gradient(0deg, rgba(0,0,0,.5), transparent 20%, transparent 82%, rgba(0,0,0,.42));
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  width: 100%;
+  padding: 34px 5.5vw 28px;
+  opacity: 0;
+  transition: opacity .9s ease;
+}
+.hero-visible { opacity: 1; }
+
+.hero-top {
+  position: absolute;
+  top: 34px;
+  left: 5.5vw;
+  right: 5.5vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.brand-lockup { display: flex; gap: 14px; align-items: center; }
+.wolf-mark {
+  width: 58px; height: 58px;
+  border: 2px solid var(--gold);
+  clip-path: polygon(50% 0, 93% 23%, 79% 92%, 50% 100%, 21% 92%, 7% 23%);
+  display: grid; place-items: center;
+  color: var(--gold); font: 700 28px/1 var(--font-heading);
+  filter: drop-shadow(0 0 8px rgba(242,169,0,.25));
+}
+.brand-name { font: 800 clamp(26px, 2.6vw, 42px)/.95 var(--font-heading); letter-spacing: -.04em; }
+.brand-name span { color: var(--gold); }
+.brand-tagline { margin-top: 8px; font-size: 12px; letter-spacing: .13em; font-weight: 600; }
+.top-status { margin-top: 12px; color: rgba(255,255,255,.68); font-size: 10px; letter-spacing: .18em; }
+.top-status i { display:inline-block; width:6px; height:6px; margin-right:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px var(--gold); }
+
+.hero-left, .hero-right {
+  position: absolute;
+  top: 22%;
+  width: 30%;
+}
+.hero-left { left: 5.5vw; }
+.hero-right { right: 2vw; top: 16%; }
+
+.eyebrow { font: 700 clamp(24px, 2.5vw, 40px)/1 var(--font-heading); letter-spacing: -.03em; }
+.hero-left h1 { margin: 15px 0 0; font: 900 clamp(48px, 5.4vw, 88px)/.88 var(--font-heading); letter-spacing: -.065em; }
+.hero-left h1 span { display:block; color:var(--gold); font-style:italic; text-shadow:0 5px 20px rgba(0,0,0,.3); }
+.hero-left h1 strong { display:block; margin-top:17px; color:#fff; font-weight:800; }
+.gold-rule { width: 55%; height: 1px; margin: 30px 0; background: linear-gradient(90deg,var(--gold),transparent); }
+.hero-copy { color:rgba(255,255,255,.88); font-size:clamp(14px,1.25vw,19px); line-height:1.55; }
+.hero-copy em { color:var(--gold); font-style:normal; font-weight:600; }
+.hero-cta {
+  display:flex; align-items:center; gap:14px; margin-top:26px; padding:15px 24px;
+  border:1px solid rgba(255,196,57,.9); border-radius:12px;
+  background:linear-gradient(135deg,#f5a900,#d98500); color:#15100a;
+  box-shadow:0 10px 35px rgba(242,169,0,.22), inset 0 1px rgba(255,255,255,.45);
+  font-size:clamp(12px,1vw,16px); font-weight:800; letter-spacing:.02em;
+  transition:transform .25s ease, box-shadow .25s ease;
+  cursor:inherit; pointer-events:none;
+}
+.play-icon { font-size:12px; }
+.hero-subline { margin:20px 0 0 8px; color:rgba(255,255,255,.78); font-size:14px; letter-spacing:.02em; }
+.hero-arrow { margin-left:10px; color:var(--gold); font-size:22px; }
+
+.quote-mark { color:var(--gold); font:900 70px/.55 Georgia,serif; }
+.hero-right blockquote { margin:8px 0 0; font-size:clamp(28px,3vw,50px); line-height:1.08; font-weight:400; letter-spacing:-.035em; }
+.hero-right blockquote strong { display:block; margin-top:10px; color:var(--gold); font:italic 700 clamp(30px,3.2vw,54px)/1.05 Georgia,serif; }
+.quote-rule { height:1px; margin:30px 0 25px; background:linear-gradient(90deg,var(--gold),transparent); }
+.hero-points { display:grid; gap:18px; }
+.hero-point { display:flex; align-items:flex-start; gap:17px; padding-bottom:16px; border-bottom:1px solid rgba(242,169,0,.3); }
+.point-icon { flex:none; width:47px; height:47px; border:1px solid var(--cream); border-radius:50%; display:grid; place-items:center; color:var(--cream); font-size:21px; background:rgba(0,0,0,.18); }
+.hero-point b { display:block; font-size:14px; letter-spacing:.01em; }
+.hero-point small { display:block; margin-top:5px; color:rgba(255,255,255,.78); font-size:13px; line-height:1.45; }
+
+.hero-center-glow { position:absolute; z-index:-1; top:7%; left:50%; width:30vw; height:30vw; transform:translateX(-50%); border-radius:50%; border:1px solid rgba(242,169,0,.28); box-shadow:0 0 80px rgba(242,169,0,.12), inset 0 0 70px rgba(242,169,0,.08); pointer-events:none; }
+.hero-bottom { position:absolute; left:12%; right:12%; bottom:27px; display:flex; justify-content:center; align-items:center; gap:30px; color:rgba(255,255,255,.92); font-size:clamp(10px,1vw,15px); letter-spacing:.18em; text-align:center; }
+.hero-bottom span:last-child { color:var(--gold); }
+.paw { color:var(--gold); font-size:20px; }
+
+@media (max-width: 900px) {
+  .hero-overlay { padding:24px; }
+  .hero-top { left:24px; right:24px; top:24px; }
+  .top-status { display:none; }
+  .hero-left { left:24px; width:44%; top:24%; }
+  .hero-right { right:24px; width:38%; top:20%; }
+  .hero-left h1 { font-size:clamp(40px,6.5vw,64px); }
+  .hero-bottom { left:5%; right:5%; gap:12px; letter-spacing:.08em; }
+}
+
+@media (max-width: 680px) {
+  body { cursor:auto; }
+  .hero-overlay { min-height:100svh; padding:20px; overflow-y:auto; }
+  .hero-top { position:relative; left:auto; right:auto; top:auto; }
+  .wolf-mark { width:44px; height:44px; font-size:22px; }
+  .brand-name { font-size:24px; }
+  .brand-tagline { font-size:9px; margin-top:5px; }
+  .hero-left, .hero-right { position:relative; left:auto; right:auto; top:auto; width:100%; }
+  .hero-left { margin-top:18vh; }
+  .hero-right { margin-top:42px; padding-bottom:70px; }
+  .hero-left h1 { font-size:clamp(44px,13vw,62px); }
+  .hero-copy { font-size:14px; }
+  .hero-cta { width:100%; justify-content:center; }
+  .hero-right blockquote { font-size:31px; }
+  .hero-right blockquote strong { font-size:34px; }
+  .hero-center-glow { width:70vw; height:70vw; top:14%; }
+  .hero-bottom { position:relative; left:auto; right:auto; bottom:auto; flex-wrap:wrap; margin-top:10px; padding-bottom:15px; }
+}
