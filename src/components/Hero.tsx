@@ -60,7 +60,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-center-glow" aria-hidden="true" />
+      {/* <div className="hero-center-glow" aria-hidden="true" /> */}
       <div className="hero-bottom">
         <span>BE HUMBLE. STAY HUNGRY.</span>
         <span className="paw">✦</span>
