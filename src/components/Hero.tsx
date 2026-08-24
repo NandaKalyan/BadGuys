@@ -36,7 +36,7 @@ export default function Hero() {
         <div className="hero-subline">Explore. Learn. Evolve. <Arrow /></div>
       </div>
 
-      {/* <div className="hero-right">
+      <div className="hero-right">
         <div className="quote-mark">“</div>
         <blockquote>
           Stay curious.<br />
@@ -58,45 +58,8 @@ export default function Hero() {
             <div><b>INSPIRE ALWAYS.</b><small>Be the reason someone<br />believes in good people.</small></div>
           </div>
         </div>
-      </div> */}
-
-      <div className="hero-right">
-  <div className="quote-mark">“</div>
-
-  <blockquote>
-    STAY CURIOUS.
-    <br />
-    <strong>LEAVE A LEGACY.</strong>
-  </blockquote>
-
-  <div className="quote-rule" />
-
-  <div className="hero-points">
-    <div className="hero-point">
-      <span className="point-icon">✦</span>
-      <div>
-        <b>LEARN.</b>
-        <small>Turn curiosity into knowledge.</small>
       </div>
-    </div>
 
-    <div className="hero-point">
-      <span className="point-icon">⌁</span>
-      <div>
-        <b>GROW.</b>
-        <small>Become better every day.</small>
-      </div>
-    </div>
-
-    <div className="hero-point">
-      <span className="point-icon">★</span>
-      <div>
-        <b>INSPIRE.</b>
-        <small>Make your journey matter.</small>
-      </div>
-    </div>
-  </div>
-</div>
 
       {/* <div className="hero-center-glow" aria-hidden="true" /> */}
       <div className="hero-bottom">
