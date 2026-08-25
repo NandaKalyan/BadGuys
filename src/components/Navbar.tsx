@@ -1,107 +1,87 @@
 import { useState } from "react";
 
-const NAV_LINKS = ["Den", "Pack", "Hunt", "Prowl"];
+const NAV_LINKS = ["Home", "Explore", "Learn", "Resources", "About"];
+
+function WolfLogo() {
+  return (
+    <svg
+      className="wolf-logo"
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M10 9L25 17L32 12L39 17L54 9L50 29C49 43 41 53 32 57C23 53 15 43 14 29L10 9Z"
+        fill="currentColor"
+      />
+      <path
+        d="M17 18L27 22L32 18L37 22L47 18L44 30C43 39 38 46 32 49C26 46 21 39 20 30L17 18Z"
+        fill="#090806"
+      />
+      <path d="M24 27L29 30L24 33V27Z" fill="currentColor" />
+      <path d="M40 27L35 30L40 33V27Z" fill="currentColor" />
+      <path d="M32 31L28 38L32 42L36 38L32 31Z" fill="currentColor" />
+    </svg>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <header className="fixed inset-x-0 top-0 z-10 flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5">
-        {/* Logo */}
-        <div className="flex flex-row items-center gap-3">
-          <span
-            className="text-[21px] tracking-tight text-white sm:text-[26px]"
-            style={{ fontFamily: "var(--font-heading)" }}
-          >
-            Mainframe&reg;
-          </span>
-          <span
-            aria-hidden="true"
-            className="select-none text-[25px] text-white sm:text-[30px]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            ✳︎
-          </span>
-        </div>
+    <header className="site-navbar">
+      <div className="navbar-shell">
+        <a href="#home" className="navbar-brand" aria-label="Wildmind home">
+          <WolfLogo />
+          <span>WILDMIND</span>
+        </a>
 
-        {/* Desktop nav links, visually centered */}
-        <nav className="pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 flex-row text-[23px] text-white md:flex">
-          {NAV_LINKS.map((link, i) => (
-            <span key={link} className="flex flex-row">
-              <a href="#" className="transition-opacity hover:opacity-60">
-                {link}
-              </a>
-              {i < NAV_LINKS.length - 1 && <span>,&nbsp;</span>}
-            </span>
+        <nav className="navbar-links" aria-label="Primary navigation">
+          {NAV_LINKS.map((link, index) => (
+            <a
+              key={link}
+              href={index === 0 ? "#home" : `#${link.toLowerCase()}`}
+              className={index === 0 ? "active" : ""}
+            >
+              <span>{link}</span>
+              {index === 0 && <i aria-hidden="true" />}
+            </a>
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <a
-          href="#"
-          className="hidden text-[23px] text-white underline underline-offset-2 transition-opacity hover:opacity-60 md:block"
-        >
-          Join the pack
+        <a href="#join" className="navbar-cta">
+          <span>Join The Pack</span>
+          <span className="navbar-paw" aria-hidden="true">✦</span>
         </a>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
-          aria-label="Toggle menu"
+          aria-label="Toggle navigation menu"
           aria-expanded={open}
-          onClick={() => setOpen((prev) => !prev)}
-          className="flex flex-col items-center justify-center gap-[5px] md:hidden"
+          onClick={() => setOpen((previous) => !previous)}
+          className="navbar-menu-button"
         >
-          <span
-            className="h-[2px] w-6 bg-white transition-all duration-300"
-            style={
-              open
-                ? { transform: "rotate(45deg) translateY(7px)" }
-                : { transform: "none" }
-            }
-          />
-          <span
-            className="h-[2px] w-6 bg-white transition-opacity duration-300"
-            style={{ opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="h-[2px] w-6 bg-white transition-all duration-300"
-            style={
-              open
-                ? { transform: "rotate(-45deg) translateY(-7px)" }
-                : { transform: "none" }
-            }
-          />
+          <span />
+          <span />
+          <span />
         </button>
-      </header>
+      </div>
 
-      {/* Mobile overlay */}
-      <div
-        className="fixed inset-0 z-[9] flex flex-col items-start justify-center gap-8 bg-white/95 px-8 backdrop-blur-sm transition-opacity duration-300 md:hidden"
-        style={{
-          opacity: open ? 1 : 0,
-          pointerEvents: open ? "auto" : "none",
-        }}
-      >
+      <div className={`mobile-menu ${open ? "open" : ""}`}>
         {NAV_LINKS.map((link) => (
           <a
             key={link}
-            href="#"
-            className="text-[32px] font-medium text-black"
+            href={link === "Home" ? "#home" : `#${link.toLowerCase()}`}
             onClick={() => setOpen(false)}
           >
             {link}
           </a>
         ))}
-        <a
-          href="#"
-          className="text-[32px] font-medium text-black underline underline-offset-2"
-          onClick={() => setOpen(false)}
-        >
-          Join the pack
+        <a href="#join" onClick={() => setOpen(false)}>
+          Join The Pack <span aria-hidden="true">✦</span>
         </a>
       </div>
-    </>
+    </header>
   );
 }
